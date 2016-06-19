@@ -1,0 +1,2 @@
+# RxAndroidMvp
+Android项目运用MVP框架并引入Rxjava技术
