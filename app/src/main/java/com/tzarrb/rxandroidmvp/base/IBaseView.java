@@ -21,8 +21,8 @@
 package com.tzarrb.rxandroidmvp.base;
 
 /**
- * Created by GuDong on 2/28/16 00:15.
- * Contact with gudong.name@gmail.com.
+ * Created by ivan on 2016/7/11 23:50.
+ * Contact with tzarrb@gmail.com.
  */
 public interface IBaseView {
 }

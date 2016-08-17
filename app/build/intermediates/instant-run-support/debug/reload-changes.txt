@@ -1,0 +1,4 @@
+CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
+CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\base\BaseFragment$1$override.class
+CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\base\BaseFragment$override.class
+CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\base\BaseActivity$override.class
