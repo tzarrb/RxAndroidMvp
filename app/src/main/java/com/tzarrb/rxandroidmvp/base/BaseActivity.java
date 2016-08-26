@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import java.lang.reflect.Method;
 
@@ -32,31 +33,34 @@ import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
 
 /**
- * Created by GuDong on 1/28/16 11:35.
- * Contact with gudong.name@gmail.com.
+ * Created by ivan on 2016/7/11.
  */
-public abstract class BaseActivity<P extends BasePreseter> extends AppCompatActivity implements IBaseView{
+public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements IBaseView{
 
-    public Context context;
-    public String activityName;
-    protected boolean runActivityTasksFist;
-    protected boolean isAcitivityDestoryed;
+    protected static Context mContext;
+    protected String activityName;
 
     protected P mPresenter;
+
+    protected boolean runTasksFist;
+    protected boolean isCreated;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(setLayoutResource());
-        context = this;
+        mContext = this;
+        isCreated = true;
         activityName = this.getClass().getName();
-        isAcitivityDestoryed = false;
-        init(savedInstanceState);
-        init();
 
         mPresenter = initPresenter();
+        if (mPresenter != null){
+            mPresenter.onAttach(this);
+            mPresenter.onCreate();
+        }
 
-        mPresenter.attach(this);
+        init(savedInstanceState);
+        init();
     }
 
     @Override
@@ -70,31 +74,35 @@ public abstract class BaseActivity<P extends BasePreseter> extends AppCompatActi
 
     protected abstract int setLayoutResource();
 
-    protected abstract void init();
+    protected abstract P initPresenter();
 
-    protected void init(Bundle savedInstanceState){}
+    protected abstract void init(Bundle savedInstanceState);
+
+    protected abstract void init();
 
     @Override
     protected void onResume() {
         super.onResume();
-        runActivityTasksFist = true;
+        runTasksFist = true;
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        runActivityTasksFist = false;
+        runTasksFist = false;
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        isAcitivityDestoryed = true;
-        mPresenter.onDestroy();
+        isCreated = false;
+        ButterKnife.unbind(this);
         if (containEventBusMethod()) {
             EventBus.getDefault().unregister(this);
         }
-        ButterKnife.unbind(this);
+        if (mPresenter != null){
+            mPresenter.onDestroy();
+        }
     }
 
     private boolean containEventBusMethod() {
@@ -112,6 +120,20 @@ public abstract class BaseActivity<P extends BasePreseter> extends AppCompatActi
         getSupportActionBar().setTitle(title);
     }
 
+    //隐藏状态栏
+    protected void hideStatusBar() {
+        WindowManager.LayoutParams attrs = getWindow().getAttributes();
+        attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        getWindow().setAttributes(attrs);
+    }
+
+    //显示状态栏
+    protected void showStatusBar() {
+        WindowManager.LayoutParams attrs = getWindow().getAttributes();
+        attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        getWindow().setAttributes(attrs);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
@@ -122,9 +144,8 @@ public abstract class BaseActivity<P extends BasePreseter> extends AppCompatActi
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * 初始化presenter
-     * @return
-     */
-    protected abstract P initPresenter();
+    public static Context getContext() {
+        return mContext;
+    }
+
 }
