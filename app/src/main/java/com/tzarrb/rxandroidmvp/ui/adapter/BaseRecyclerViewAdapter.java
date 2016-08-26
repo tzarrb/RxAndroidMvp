@@ -1,6 +1,6 @@
 package com.tzarrb.rxandroidmvp.ui.adapter;
 
-
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +19,9 @@ import butterknife.ButterKnife;
 @SuppressWarnings("ALL")
 public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-
-    static final int TYPE_ITEM = 0;
-    static final int TYPE_FOOTER = 1;
+    protected Context mContext;
+    protected static final int TYPE_ITEM = 0;
+    protected static final int TYPE_FOOTER = 1;
     private List<T> mDatas = new LinkedList<>();
     private OnItemClickListener<T> mOnItemClickListener;
     private boolean showFoot = false;

@@ -6,7 +6,6 @@ import android.support.v4.view.ViewPager;
 
 import com.tzarrb.rxandroidmvp.R;
 import com.tzarrb.rxandroidmvp.base.BaseActivity;
-import com.tzarrb.rxandroidmvp.base.BasePresenter;
 import com.tzarrb.rxandroidmvp.data.entity.ImageDetailInfo;
 import com.tzarrb.rxandroidmvp.mvp.presenter.ImageDetailPresenter;
 import com.tzarrb.rxandroidmvp.mvp.view.ImageDetailView;
@@ -46,7 +45,7 @@ public class ImageDetailActivity extends BaseActivity<ImageDetailPresenter> impl
 
     @Override
     protected ImageDetailPresenter initPresenter() {
-        return new ImageDetailPresenter(context);
+        return new ImageDetailPresenter(mContext);
     }
 
     @Override
@@ -56,12 +55,11 @@ public class ImageDetailActivity extends BaseActivity<ImageDetailPresenter> impl
 
     @Override
     protected void init() {
-        hideStatusBar();
         getBundle();
 
         list = new LinkedList<>();
         mPresenter.requestNetWork(id);
-        bigImageAdapter = new ImageDetailAdapter(list);
+        bigImageAdapter = new ImageDetailAdapter(mContext, list);
     }
 
     @Override
@@ -87,7 +85,7 @@ public class ImageDetailActivity extends BaseActivity<ImageDetailPresenter> impl
 
     @Override
     public void netWorkError() {
-        T.showShort(context, UIUtils.getString(R.string.network_error));
+        T.showShort(mContext, UIUtils.getString(R.string.network_error));
     }
 
 }

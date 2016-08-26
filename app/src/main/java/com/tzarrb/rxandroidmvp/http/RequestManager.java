@@ -13,6 +13,7 @@ import com.tzarrb.rxandroidmvp.http.retrofit.ApiService;
 import com.tzarrb.rxandroidmvp.utils.RetrofitUtils;
 
 import rx.Subscriber;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -39,50 +40,50 @@ public class RequestManager {
         return instance;
     }
 
-    public void newsTabName(Subscriber<TabNewsBean> subscriber) {
-        apiService.getNewsTabName()
+    public Subscription newsTabName(Subscriber<TabNewsBean> subscriber) {
+        return apiService.getNewsTabName()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
 
-    public void newsList(int id, int page, Subscriber<NewsListBean> subscriber) {
-        apiService.getNewsList(id, page)
+    public Subscription newsList(int id, int page, Subscriber<NewsListBean> subscriber) {
+        return apiService.getNewsList(id, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
 
-    public void newsDetail(int id, Subscriber<NewsDetailBean> subscriber) {
-        apiService.getNewsDetail(id)
+    public Subscription newsDetail(int id, Subscriber<NewsDetailBean> subscriber) {
+        return apiService.getNewsDetail(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
 
-    public void imageTabName(Subscriber<TabNameBean> subscriber) {
-        apiService.getImageTabName()
+    public Subscription imageTabName(Subscriber<TabNameBean> subscriber) {
+        return apiService.getImageTabName()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
 
-    public void imageList(int id, int page, Subscriber<ImageListBean> subscriber) {
-        apiService.getImageList(id, page)
+    public Subscription imageList(int id, int page, Subscriber<ImageListBean> subscriber) {
+        return apiService.getImageList(id, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
 
-    public void imageDetail(int id, Subscriber<ImageDetailBean> subscriber) {
-        apiService.getImageDetail(id)
+    public Subscription imageDetail(int id, Subscriber<ImageDetailBean> subscriber) {
+        return apiService.getImageDetail(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
 
-    public void imageNew(int id, int rows, Subscriber<ImageNewBean> subscriber) {
-        apiService.getImageNews(id, rows)
+    public Subscription imageNew(int id, int rows, Subscriber<ImageNewBean> subscriber) {
+        return apiService.getImageNews(id, rows)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);

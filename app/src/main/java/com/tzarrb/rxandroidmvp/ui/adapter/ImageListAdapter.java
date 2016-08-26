@@ -1,6 +1,7 @@
 package com.tzarrb.rxandroidmvp.ui.adapter;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,9 +24,9 @@ import butterknife.Bind;
  */
 public class ImageListAdapter extends BaseRecyclerViewAdapter<ImageListInfo> {
 
-
-    public ImageListAdapter(List<ImageListInfo> datas) {
+    public ImageListAdapter(Context context, List<ImageListInfo> datas) {
         super(datas);
+        this.mContext = context;
     }
 
     @Override
@@ -35,7 +36,7 @@ public class ImageListAdapter extends BaseRecyclerViewAdapter<ImageListInfo> {
             viewHolder.tvTitle.setText(data.getTitle());
             viewHolder.tvSize.setText(data.getSize() + UIUtils.getString(R.string.list_adapter_number));
             viewHolder.tvCount.setText(UIUtils.getString(R.string.list_adapter_views) + data.getCount());
-            ImageLoaderUtils.display(UIUtils.getContext(), viewHolder.iv, Api.IMAGER_URL + data.getImg());
+            ImageLoaderUtils.display(mContext, viewHolder.iv, Api.IMAGER_URL + data.getImg());
         }
     }
 

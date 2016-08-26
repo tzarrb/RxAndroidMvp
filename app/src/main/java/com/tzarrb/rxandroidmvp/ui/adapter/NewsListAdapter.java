@@ -1,5 +1,6 @@
 package com.tzarrb.rxandroidmvp.ui.adapter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -26,8 +27,9 @@ import butterknife.Bind;
  * Created by ivan on 2016/8/10.
  */
 public class NewsListAdapter extends BaseRecyclerViewAdapter<NewsListInfo> {
-    public NewsListAdapter(List<NewsListInfo> datas) {
+    public NewsListAdapter(Context context, List<NewsListInfo> datas) {
         super(datas);
+        mContext = context;
     }
 
     @Override
@@ -38,7 +40,7 @@ public class NewsListAdapter extends BaseRecyclerViewAdapter<NewsListInfo> {
             viewHolder.tvTime.setText(UIUtils.getString(R.string.news_time) + TimeUtils.timeFormat(data.getTime()));
             viewHolder.tvTitle.setText(data.getTitle());
             viewHolder.tvUrl.setText(data.getFromurl());
-            ImageLoaderUtils.display(UIUtils.getContext(), viewHolder.image, Api.IMAGER_URL + data.getImg());
+            ImageLoaderUtils.display(mContext, viewHolder.image, Api.IMAGER_URL + data.getImg());
 
             viewHolder.tvUrl.setOnClickListener(new View.OnClickListener() {
                 @Override

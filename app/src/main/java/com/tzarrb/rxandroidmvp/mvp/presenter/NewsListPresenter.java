@@ -9,6 +9,8 @@ import com.tzarrb.rxandroidmvp.http.RequestManager;
 import com.tzarrb.rxandroidmvp.http.retrofit.MySubscriber;
 import com.tzarrb.rxandroidmvp.mvp.view.NewsListView;
 
+import rx.Subscription;
+
 /**
  * Created by ivan on 2016/8/4.
  */
@@ -23,7 +25,7 @@ public class NewsListPresenter extends BasePresenter<NewsListView> {
         } else {
             mView.showFoot();
         }
-        RequestManager.getInstance(mContext).newsList(id, page, new MySubscriber<NewsListBean>() {
+        Subscription subscription = RequestManager.getInstance(mContext).newsList(id, page, new MySubscriber<NewsListBean>() {
             @Override
             public void onError(Throwable e) {
                 mView.hideFoot();
@@ -38,6 +40,7 @@ public class NewsListPresenter extends BasePresenter<NewsListView> {
                 mView.hideProgress();
             }
         });
+        mSubscriptions.add(subscription);
     }
 
     public void onClick(NewsListInfo info) {

@@ -13,8 +13,7 @@ import com.tzarrb.rxandroidmvp.utils.L;
 import java.io.File;
 
 /**
- * Created by ivan on 2016/8/4 18:36.
- * Contact with tzarrb@gmail.com.
+ * Created by ivan on 2016/8/4.
  */
 public class MainApplication extends Application {
     private static Context mContext;
@@ -36,7 +35,6 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = this;
-        instance = (MainApplication) getApplicationContext();
 
         L.isDebug = true;
 
@@ -58,7 +56,7 @@ public class MainApplication extends Application {
                 ROOT = FileUtils.getSDPath();
             }else {
                 // 获取内置存储区的地址
-                ROOT = instance.getFilesDir().toString();
+                ROOT = mContext.getFilesDir().toString();
             }
         }
 

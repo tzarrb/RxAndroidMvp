@@ -17,7 +17,6 @@ import java.lang.reflect.Method;
 
 import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
-import rx.Subscription;
 
 /**
  * Created by ivan on 2016/7/6.
@@ -27,7 +26,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
 
     protected static final String FRAGMENT_INDEX = "fragment_index";
 
-    protected Context context;
+    protected Context mContext;
     protected View rootView;
     protected String fragmentName;
 
@@ -44,7 +43,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         if (bundle != null) {
             index = bundle.getInt(FRAGMENT_INDEX);
         }
-        context = getContext();
+        mContext = getContext();
         fragmentName = this.getClass().getName();
 
         if (containEventBusMethod()) {

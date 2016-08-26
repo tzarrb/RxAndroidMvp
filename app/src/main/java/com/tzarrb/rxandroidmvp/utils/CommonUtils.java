@@ -1,5 +1,6 @@
 package com.tzarrb.rxandroidmvp.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
@@ -32,15 +33,15 @@ public class CommonUtils {
     }
 
     // 收起软键盘
-    public static void closeSyskeyBroad() {
-        if (UIUtils.getActivity().getCurrentFocus().getWindowToken() != null) {
-            ((InputMethodManager) UIUtils.getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(UIUtils.getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+    public static void closeSyskeyBroad(Activity context) {
+        if (context.getCurrentFocus().getWindowToken() != null) {
+            ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(context.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
 
     //屏幕高度
-    public static int getTop() {
-        WindowManager windowManager = UIUtils.getActivity().getWindowManager();
+    public static int getTop(Activity context) {
+        WindowManager windowManager = context.getWindowManager();
         int width = windowManager.getDefaultDisplay().getWidth();
         int height = windowManager.getDefaultDisplay().getHeight();
         return height;
@@ -53,9 +54,9 @@ public class CommonUtils {
 
 
     //状态栏高度
-    public static int getRectTop() {
+    public static int getRectTop(Activity context) {
         Rect outRect = new Rect();
-        UIUtils.getActivity().getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect);
+        context.getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect);
         int i = outRect.top;
         return i;
     }

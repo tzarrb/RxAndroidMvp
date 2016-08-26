@@ -10,6 +10,8 @@ import com.tzarrb.rxandroidmvp.http.retrofit.MySubscriber;
 import com.tzarrb.rxandroidmvp.mvp.view.TabNameView;
 import com.tzarrb.rxandroidmvp.mvp.view.TabNewsView;
 
+import rx.Subscription;
+
 /**
  * Created by ivan on 2016/8/4.
  * Contact with tzarrb@gmail.com.
@@ -20,7 +22,7 @@ public class NewsPagerPresenter extends BasePresenter<TabNewsView> {
     }
 
     public void requestTabName() {
-        RequestManager.getInstance(mContext).newsTabName(new MySubscriber<TabNewsBean>() {
+        Subscription subscription = RequestManager.getInstance(mContext).newsTabName(new MySubscriber<TabNewsBean>() {
             @Override
             public void onError(Throwable e) {
                 mView.netWorkError();
@@ -31,5 +33,6 @@ public class NewsPagerPresenter extends BasePresenter<TabNewsView> {
                 mView.addTabName(tabNameBean.getNewsInfo());
             }
         });
+        mSubscriptions.add(subscription);
     }
 }

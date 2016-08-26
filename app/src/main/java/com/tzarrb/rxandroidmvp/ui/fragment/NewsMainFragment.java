@@ -9,7 +9,6 @@ import android.view.View;
 
 import com.tzarrb.rxandroidmvp.R;
 import com.tzarrb.rxandroidmvp.base.BaseFragment;
-import com.tzarrb.rxandroidmvp.base.BasePresenter;
 import com.tzarrb.rxandroidmvp.constant.Constant;
 import com.tzarrb.rxandroidmvp.data.entity.NewsListInfo;
 import com.tzarrb.rxandroidmvp.mvp.presenter.NewsListPresenter;
@@ -59,7 +58,7 @@ public class NewsMainFragment extends BaseFragment<NewsListPresenter> implements
 
     @Override
     protected NewsListPresenter initPresenter() {
-        return new NewsListPresenter(context);
+        return new NewsListPresenter(mContext);
     }
 
     @Override
@@ -74,7 +73,7 @@ public class NewsMainFragment extends BaseFragment<NewsListPresenter> implements
         }
 
         list = new LinkedList<>();
-        adapter = new NewsListAdapter(list);
+        adapter = new NewsListAdapter(mContext, list);
         adapter.setOnItemClickListener(this);
 
         srfLayout.setOnRefreshListener(this);
@@ -91,6 +90,12 @@ public class NewsMainFragment extends BaseFragment<NewsListPresenter> implements
             }
         });
         isLoad = true;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        isLoad = false;
     }
 
     @Override
@@ -119,7 +124,7 @@ public class NewsMainFragment extends BaseFragment<NewsListPresenter> implements
 
     @Override
     public void netWorkError() {
-        T.showShort(context, UIUtils.getString(R.string.network_error));
+        T.showShort(mContext, UIUtils.getString(R.string.network_error));
     }
 
     @Override

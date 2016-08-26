@@ -31,15 +31,13 @@ import java.lang.reflect.Method;
 
 import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
-import rx.Subscription;
 
 /**
- * Created by ivan on 2016/7/11 23:40.
- * Contact with tzarrb@gmail.com.
+ * Created by ivan on 2016/7/11.
  */
 public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements IBaseView{
 
-    protected static Context context;
+    protected static Context mContext;
     protected String activityName;
 
     protected P mPresenter;
@@ -51,7 +49,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(setLayoutResource());
-        context = this;
+        mContext = this;
         isCreated = true;
         activityName = this.getClass().getName();
 
@@ -147,7 +145,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     }
 
     public static Context getContext() {
-        return context;
+        return mContext;
     }
 
 }

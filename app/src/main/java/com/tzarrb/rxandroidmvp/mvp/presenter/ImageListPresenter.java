@@ -12,6 +12,8 @@ import com.tzarrb.rxandroidmvp.ui.activity.ImageDetailActivity;
 
 import java.util.List;
 
+import rx.Subscription;
+
 /**
  * Created by ivan on 2016/8/4.
  */
@@ -27,7 +29,7 @@ public class ImageListPresenter extends BasePresenter<ImageListView> {
         } else {
             mView.showFoot();
         }
-        RequestManager.getInstance(mContext).imageList(id, page, new MySubscriber<ImageListBean>() {
+        Subscription subscription = RequestManager.getInstance(mContext).imageList(id, page, new MySubscriber<ImageListBean>() {
             @Override
             public void onError(Throwable e) {
                 mView.hideFoot();
@@ -42,6 +44,7 @@ public class ImageListPresenter extends BasePresenter<ImageListView> {
                 mView.hideProgress();
             }
         });
+        mSubscriptions.add(subscription);
     }
 
     public void onClick(ImageListInfo info) {

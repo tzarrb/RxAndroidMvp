@@ -1,26 +1,21 @@
 package com.tzarrb.rxandroidmvp.utils;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
+import com.tzarrb.rxandroidmvp.MainApplication;
 import com.tzarrb.rxandroidmvp.base.BaseActivity;
 
 /**
- * by ivan on 2016/4/28.
+ * Created by ivan on 2016/4/28.
  */
 @SuppressWarnings("ALL")
 public class UIUtils {
 
     public static Context getContext() {
-        return BaseActivity.getContext();
+        return MainApplication.getContext();
     }
-
-    public static Activity getActivity() {
-        return (Activity) getContext();
-    }
-
 
     public static Drawable getDrawable(int id) {
         return getContext().getResources().getDrawable(id);

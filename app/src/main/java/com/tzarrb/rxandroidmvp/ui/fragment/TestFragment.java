@@ -1,7 +1,6 @@
 package com.tzarrb.rxandroidmvp.ui.fragment;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -89,7 +88,7 @@ public class TestFragment extends BaseFragment implements rxBindingUtils.RxBindi
     @Override
     public void clicks() {
         L.i("TestFragment", "被点击了");
-        T.showShort(context, et1.getText().toString() + "+" + et2.getText().toString() + "+" + et3.getText().toString());
+        T.showShort(mContext, et1.getText().toString() + "+" + et2.getText().toString() + "+" + et3.getText().toString());
     }
 
     @Override

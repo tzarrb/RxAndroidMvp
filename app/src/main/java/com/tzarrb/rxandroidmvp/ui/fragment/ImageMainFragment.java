@@ -8,7 +8,6 @@ import android.view.View;
 
 import com.tzarrb.rxandroidmvp.R;
 import com.tzarrb.rxandroidmvp.base.BaseFragment;
-import com.tzarrb.rxandroidmvp.base.BasePresenter;
 import com.tzarrb.rxandroidmvp.constant.Constant;
 import com.tzarrb.rxandroidmvp.data.entity.ImageListInfo;
 import com.tzarrb.rxandroidmvp.mvp.presenter.ImageListPresenter;
@@ -60,7 +59,7 @@ public class ImageMainFragment extends BaseFragment<ImageListPresenter> implemen
 
     @Override
     protected ImageListPresenter initPresenter() {
-        return new ImageListPresenter(context);
+        return new ImageListPresenter(mContext);
     }
 
     @Override
@@ -75,7 +74,7 @@ public class ImageMainFragment extends BaseFragment<ImageListPresenter> implemen
         }
 
         list = new LinkedList<>();
-        adapter = new ImageListAdapter(list);
+        adapter = new ImageListAdapter(mContext, list);
         adapter.setOnItemClickListener(this);
 
         srfLayout.setOnRefreshListener(this);
@@ -92,6 +91,12 @@ public class ImageMainFragment extends BaseFragment<ImageListPresenter> implemen
             }
         });
         isLoad = true;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        isLoad = false;
     }
 
     @Override
@@ -121,7 +126,7 @@ public class ImageMainFragment extends BaseFragment<ImageListPresenter> implemen
 
     @Override
     public void netWorkError() {
-        T.showShort(context, UIUtils.getString(R.string.network_error));
+        T.showShort(mContext, UIUtils.getString(R.string.network_error));
     }
 
     @Override

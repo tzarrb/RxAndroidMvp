@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx.Subscription;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by ivan on 2016/7/11 .
@@ -20,7 +21,7 @@ public abstract class BasePresenter<V extends IBaseView> {
     public V mView;
     protected Context mContext;
 
-    protected List<Subscription> subscriptionList;
+    protected CompositeSubscription mSubscriptions;
 
     public BasePresenter(Context context) {
         mContext = context;
@@ -31,19 +32,12 @@ public abstract class BasePresenter<V extends IBaseView> {
     }
 
     public void onCreate(){
-        this.subscriptionList = new ArrayList<>();
+        mSubscriptions = new CompositeSubscription();
     }
 
     public  void onDestroy(){
+        mSubscriptions.clear();
         mView = null;
-        if (subscriptionList != null && !subscriptionList.isEmpty()){
-            for (Subscription subscription : subscriptionList) {
-                if (subscription != null && !subscription.isUnsubscribed()) {
-                    subscription.unsubscribe();
-                }
-            }
-        }
-        subscriptionList = null;
     }
 
 }

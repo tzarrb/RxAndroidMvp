@@ -1,4 +1,13 @@
+CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\mvp\presenter\ImagePagerPresenter$override.class
+CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\mvp\presenter\ImagePagerPresenter$1$override.class
+CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\base\BasePresenter$override.class
+CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\mvp\presenter\ImageListPresenter$override.class
+CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\http\RequestManager$override.class
+CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\mvp\presenter\ImageListPresenter$1$override.class
 CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
-CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\base\BaseFragment$1$override.class
-CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\base\BaseFragment$override.class
-CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\base\BaseActivity$override.class
+CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\mvp\presenter\NewsPagerPresenter$override.class
+CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\mvp\presenter\ImageDetailPresenter$override.class
+CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\mvp\presenter\NewsPagerPresenter$1$override.class
+CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\mvp\presenter\NewsListPresenter$override.class
+CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\mvp\presenter\ImageDetailPresenter$1$override.class
+CHANGED,F:\My Project\Android\RxAndroidMvp\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\tzarrb\rxandroidmvp\mvp\presenter\NewsListPresenter$1$override.class

@@ -30,7 +30,8 @@ public class ImageDetailPresenter extends BasePresenter<ImageDetailView> {
     }
 
     public void requestNetWork(int id) {
-        MySubscriber subscription = new MySubscriber<ImageDetailBean>() {
+
+        Subscription subscription = RequestManager.getInstance(mContext).imageDetail(id, new MySubscriber<ImageDetailBean>() {
             @Override
             public void onError(Throwable e) {
                 mView.netWorkError();
@@ -40,9 +41,8 @@ public class ImageDetailPresenter extends BasePresenter<ImageDetailView> {
             public void onNext(ImageDetailBean imageDetailBean) {
                 mView.setImageDetailInfo(imageDetailBean.getList());
             }
-        };
-        subscriptionList.add(subscription);
-        RequestManager.getInstance(mContext).imageDetail(id, subscription);
+        });
+        mSubscriptions.add(subscription);
     }
 
     public void competence(int requestCode, int[] grantResults) {

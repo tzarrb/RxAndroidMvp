@@ -8,7 +8,6 @@ import com.tzarrb.rxandroidmvp.R;
 import com.tzarrb.rxandroidmvp.base.BaseFragment;
 import com.tzarrb.rxandroidmvp.data.entity.TabNameInfo;
 import com.tzarrb.rxandroidmvp.mvp.presenter.NewsPagerPresenter;
-import com.tzarrb.rxandroidmvp.mvp.view.TabNameView;
 import com.tzarrb.rxandroidmvp.mvp.view.TabNewsView;
 import com.tzarrb.rxandroidmvp.ui.adapter.NewsPagerAdapter;
 import com.tzarrb.rxandroidmvp.utils.T;
@@ -31,15 +30,15 @@ public class NewsViewPagerFragment extends BaseFragment<NewsPagerPresenter> impl
 
     private List<TabNameInfo> data;
     private NewsPagerAdapter newsPagerAdapter;
-    @Override
 
+    @Override
     protected int setLayoutResource() {
         return R.layout.fragment_viewpager;
     }
 
     @Override
     protected NewsPagerPresenter initPresenter() {
-        return new NewsPagerPresenter(context);
+        return new NewsPagerPresenter(mContext);
     }
 
     @Override
@@ -66,6 +65,6 @@ public class NewsViewPagerFragment extends BaseFragment<NewsPagerPresenter> impl
 
     @Override
     public void netWorkError() {
-        T.showShort(context, UIUtils.getContext().getResources().getString(R.string.network_error));
+        T.showShort(mContext, UIUtils.getContext().getResources().getString(R.string.network_error));
     }
 }

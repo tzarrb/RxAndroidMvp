@@ -3,11 +3,9 @@ package com.tzarrb.rxandroidmvp.ui.fragment;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 
 import com.tzarrb.rxandroidmvp.R;
 import com.tzarrb.rxandroidmvp.base.BaseFragment;
-import com.tzarrb.rxandroidmvp.base.BasePresenter;
 import com.tzarrb.rxandroidmvp.data.entity.TabNameInfo;
 import com.tzarrb.rxandroidmvp.mvp.presenter.ImagePagerPresenter;
 import com.tzarrb.rxandroidmvp.mvp.view.TabNameView;
@@ -42,7 +40,7 @@ public class ImageViewPagerFragment extends BaseFragment<ImagePagerPresenter> im
 
     @Override
     protected ImagePagerPresenter initPresenter() {
-        return new ImagePagerPresenter(context);
+        return new ImagePagerPresenter(mContext);
     }
 
     @Override
@@ -69,6 +67,6 @@ public class ImageViewPagerFragment extends BaseFragment<ImagePagerPresenter> im
 
     @Override
     public void netWorkError() {
-        T.showShort(context, UIUtils.getContext().getResources().getString(R.string.network_error));
+        T.showShort(mContext, UIUtils.getContext().getResources().getString(R.string.network_error));
     }
 }
